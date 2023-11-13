@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поточна дата і час</title>
+</head>
+<body>
+    <p id="currentDate"></p>
+    <button onclick="showCurrentDateTime()">Показати дату і час</button>
+
+    <script>
+        function showCurrentDateTime() {
+            const currentDate = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            const formattedDate = currentDate.toLocaleDateString('uk-UA', options);
+
+            document.getElementById('currentDate').textContent = `Дата: ${formattedDate}`;
+
+            const dayOfWeek = currentDate.toLocaleDateString('uk-UA', { weekday: 'long' });
+            document.getElementById('currentDate').textContent += `<br>День тижня: ${dayOfWeek}`;
+
+            const time = currentDate.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('currentDate').textContent += `<br>Час: ${time}`;
+        }
+    </script>
+</body>
+</html>
